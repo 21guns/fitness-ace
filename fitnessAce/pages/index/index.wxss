@@ -1,0 +1,22 @@
+.picker{
+  width: 100%;
+  position:absolute;
+  left:5px;
+  top:5%;
+
+  /* background-color: #cc5226; */
+
+}
+.group{
+  width: 100%;
+  position:absolute;
+  left:5px;
+  top:10%;
+
+  /* background-color: #cc5226; */
+
+}
+.group-line{
+  display: flex;
+  justify-content:space-between
+}

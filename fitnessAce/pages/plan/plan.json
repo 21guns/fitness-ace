@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "健身计划",
+  "usingComponents": {
+    "calendar": "../../component/calendar/index"
+  }
+}

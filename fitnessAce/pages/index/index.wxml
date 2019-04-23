@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class="container">
+  <picker class="picker"
+    mode="date"
+    value="{{date}}"
+    bindchange="bindDateChange"
+  >
+    {{date}}
+  </picker>
+  <view class="group">
+
+  <view class="group-line">
+    <label class="" for="">组数
+    </label>
+    <input placeholder="fgsdfgs  "  />
+  </view>
+  <view class="group-line">
+    <label class="" for="">间隔(秒)
+    </label>
+    <input placeholder="dsfs"  />
+  </view>
+
+   <view class='studyList' wx:for="{{items}}" wx:key="{{index}}" wx:for-index="index" wx:for-item="items"> 
+    <view class='itemTitle'>条目{{index+1}}：{{items.content}}</view>
+    <view class='itemAnswer'>翻译答案：{{items.answer}}</view>
+    <view class='myAnswer'>我的答案：{{myAnswer}}</view>
+    <view class='itemDescription'>条目释义：{{items.description}}</view>
+    </view>
+
+
+  </view>
+</view>

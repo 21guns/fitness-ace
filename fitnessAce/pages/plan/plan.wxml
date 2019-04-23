@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<view class="container-fluid">
+    <view class="demo4">
+    <calendar calendar="{{calendar}}" gesture="{{gesture}}"></calendar>
+
+    </view>
+</view>
