@@ -2,6 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/plan/plan",
+    "pages/plan/newPlan/index",
+        
     "pages/logs/logs"
   ],
   "window": {

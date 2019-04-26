@@ -14,6 +14,13 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const findeIndexForShowId= (arrays, showId) => {
+  return arrays.findIndex((value, index, arr) => {
+    return value.showId == parseInt(showId)
+  })
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  findeIndexForShowId: findeIndexForShowId
 }

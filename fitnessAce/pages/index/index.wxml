@@ -1,32 +1,57 @@
 <!--index.wxml-->
-<view class="container">
-  <picker class="picker"
+<view class="container-plan">
+  <view class="header">
+    <picker class="picker"
     mode="date"
     value="{{date}}"
     bindchange="bindDateChange"
-  >
-    {{date}}
-  </picker>
-  <view class="group">
+    >
+    {{plan.date}}
+    </picker>
 
-  <view class="group-line">
-    <label class="" for="">组数
-    </label>
-    <input placeholder="fgsdfgs  "  />
-  </view>
-  <view class="group-line">
-    <label class="" for="">间隔(秒)
-    </label>
-    <input placeholder="dsfs"  />
+    <picker class="picker"
+    mode="selector"
+    range='{{topics}}'
+    bindchange="bindTopicChange"
+    >
+    {{topics[plan.topic]}}
+    </picker>
   </view>
 
-   <view class='studyList' wx:for="{{items}}" wx:key="{{index}}" wx:for-index="index" wx:for-item="items"> 
-    <view class='itemTitle'>条目{{index+1}}：{{items.content}}</view>
-    <view class='itemAnswer'>翻译答案：{{items.answer}}</view>
-    <view class='myAnswer'>我的答案：{{myAnswer}}</view>
-    <view class='itemDescription'>条目释义：{{items.description}}</view>
+  <view class="group" wx:for="{{plan.groups}}" wx:key="{{index}}" wx:for-index="index" wx:for-item="group"> 
+    <view class="group-line">
+      <label class="item" for="">组数</label>
+      <input class="item" data-group='{{group.showId}}' bindinput="bindCountInput" value="{{group.count}}" placeholder="fgsdfgs  "  />
+    </view>
+    <view class="group-line">
+      <label class="item" for="">间隔(秒)</label>
+      <input class="item" data-group='{{group.showId}}' bindinput="bindIntervalInput" value="{{group.interval}}" placeholder="dsfs"  />
     </view>
 
+    <view class="action-list" wx:for="{{group.actions}}" wx:key="{{index}}" wx:for-index="index" wx:for-item="action"> 
+      <view>
+        <view class="group-line">
+          <label class="item" for="">动作名称</label>
+          <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" placeholder="dsfs" bindinput="bindNameInput"  value="{{action.name}}" placeholder="dsfs"  />
+        </view>
+        <view class="group-line">
+          <label class="item" for="">每组重量</label>
+          <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" placeholder="dsfs" bindinput="bindWeightInput" value="{{action.weight}}" placeholder="dsfs"  />
+        </view>
+        <view class="group-line">
+          <label class="item" for="">每组次数</label>
+          <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" placeholder="dsfs" bindinput="bindFrequencyInput" value="{{action.frequency}}" />
+        </view>
+      </view>
+      <view class="action-del">
+        <button id='{{action.showId}}' data-group='{{group.showId}}' class="action-button-del" bindtap="delAction">删除</button>
+      </view>
+
+    </view>
+    <view><button id='{{group.showId}}' data-group='{{group.showId}}'  class="action-button" bindtap="addAction">添加</button></view>
+
 
   </view>
+  <view><button id='{{group.showId}}' data-group='{{group.showId}}'  class="group-button" bindtap="addGroup">添加</button></view>
+
 </view>
