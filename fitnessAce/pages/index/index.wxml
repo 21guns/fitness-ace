@@ -16,42 +16,72 @@
     >
     {{topics[plan.topic]}}
     </picker>
+    <picker class="picker"
+      mode="selector"
+      range='{{weightUnits}}'
+      bindchange="bindTopicChange"
+    >
+    {{weightUnits[0]}}
+  </picker>
   </view>
 
   <view class="group" wx:for="{{plan.groups}}" wx:key="{{index}}" wx:for-index="index" wx:for-item="group"> 
     <view class="group-line">
-      <label class="item" for="">组数</label>
-      <input class="item" data-group='{{group.showId}}' bindinput="bindCountInput" value="{{group.count}}" placeholder="fgsdfgs  "  />
+      <label class="item" for=""></label>
+      <label data-group='{{group.showId}}' class="item" bindtap="delGroup">删除</label>
     </view>
-    <view class="group-line">
-      <label class="item" for="">间隔(秒)</label>
-      <input class="item" data-group='{{group.showId}}' bindinput="bindIntervalInput" value="{{group.interval}}" placeholder="dsfs"  />
-    </view>
-
-    <view class="action-list" wx:for="{{group.actions}}" wx:key="{{index}}" wx:for-index="index" wx:for-item="action"> 
+    <view class='group-header'>
       <view>
         <view class="group-line">
-          <label class="item" for="">动作名称</label>
-          <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" placeholder="dsfs" bindinput="bindNameInput"  value="{{action.name}}" placeholder="dsfs"  />
+          <label class="item" for="">组数</label>
+          <input class="item" data-group='{{group.showId}}' bindinput="bindCountInput" value="{{group.count}}" placeholder="组数" type='number' />
         </view>
         <view class="group-line">
-          <label class="item" for="">每组重量</label>
-          <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" placeholder="dsfs" bindinput="bindWeightInput" value="{{action.weight}}" placeholder="dsfs"  />
-        </view>
-        <view class="group-line">
-          <label class="item" for="">每组次数</label>
-          <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" placeholder="dsfs" bindinput="bindFrequencyInput" value="{{action.frequency}}" />
+          <label class="item" for="">间隔(秒)</label>
+          <input class="item" data-group='{{group.showId}}' bindinput="bindIntervalInput" value="{{group.interval}}" placeholder="每组间隔" type='number' />
         </view>
       </view>
-      <view class="action-del">
-        <button id='{{action.showId}}' data-group='{{group.showId}}' class="action-button-del" bindtap="delAction">删除</button>
-      </view>
-
     </view>
-    <view><button id='{{group.showId}}' data-group='{{group.showId}}'  class="action-button" bindtap="addAction">添加</button></view>
+    <view class="action-list" wx:for="{{group.actions}}" wx:key="{{index}}" wx:for-index="index" wx:for-item="action"> 
+      <!-- <view> -->
+        <view class="group-line">
+          <label class="item" for=""></label>
+          <label data-group='{{group.showId}}' class="item" bindtap="delAction">删除</label>
+        </view>
+        <view class="action-line">
+          <label class="item" for="">动作名称</label>
+          <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" bindinput="bindNameInput"  value="{{action.name}}" placeholder="动作名称"  />
+        </view>
+        <view class="action-line">
+          <label class="item" for="">每组次数</label>
+          <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" placeholder="dsfs" bindinput="bindFrequencyInput" value="{{action.frequency}}" type='number' />
+        </view>
+        <view class="action-line">
+          <label class="item" for="">每组重量</label>
+          <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" placeholder="dsfs" bindinput="bindWeightInput" value="{{action.weight}}" placeholder="dsfs" type='digit' />
+          <!-- <radio-group class="radio-group" bindchange="radioChange">
+              <radio value="{{item.name}}" checked="{{item.checked}}" />
+              kg
+              <radio value="{{item.name}}" checked="{{item.checked}}" />
+              lbs
+          </radio-group> -->
 
-
+        </view>
+    </view>
+    <view>
+      <button id='{{group.showId}}' data-group='{{group.showId}}'  class="action-button" bindtap="addAction">添加</button>
+    </view>
   </view>
-  <view><button id='{{group.showId}}' data-group='{{group.showId}}'  class="group-button" bindtap="addGroup">添加</button></view>
+  <view>
+    <button id='{{group.showId}}' data-group='{{group.showId}}'  class="group-button" bindtap="addGroup">添加</button>
+  </view>
+  <view class='footer'>
+    <navigator
+    url="/pages/plan/newPlan/index"
+    hover-class="navigator-hover"
+  >
+    跳转到新页面
+  </navigator>
+  </view>
 
 </view>

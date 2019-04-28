@@ -5,7 +5,7 @@ const app = getApp()
 Page({
   data: {
     topics:["胸","背","腿","肩"],
-    topic: 0,
+    weightUnits:["kg","lbs"],
     showId:1,
     plan:{
       date:'',
@@ -18,6 +18,7 @@ Page({
           showId: 0,
           name: '',
           weight: 0,
+          weightUnit:'kg',
           frequency: 0,
         }]
       }]
@@ -95,6 +96,12 @@ Page({
     this.data.plan.groups.push(this._newGroup())
     this._refresh()
     console.log(this.data.plan.groups)
+  },
+  delGroup: function (e) {
+    let groupIndex = this._findGoupIndex(e)
+
+    this.data.plan.groups.splice(groupIndex, 1)
+    this._refresh()
   },
   addAction: function(e) {
     let groupIndex = this._findGoupIndex(e)
