@@ -34,11 +34,11 @@
       <view>
         <view class="group-line">
           <label class="item" for="">组数</label>
-          <input class="item" data-group='{{group.showId}}' bindinput="bindCountInput" value="{{group.count}}" placeholder="组数" type='number' />
+          <input class="input" data-group='{{group.showId}}' bindinput="bindCountInput" value="{{group.count}}" placeholder="组数" type='number' />
         </view>
         <view class="group-line">
           <label class="item" for="">间隔(秒)</label>
-          <input class="item" data-group='{{group.showId}}' bindinput="bindIntervalInput" value="{{group.interval}}" placeholder="每组间隔" type='number' />
+          <input class="input" data-group='{{group.showId}}' bindinput="bindIntervalInput" value="{{group.interval}}" placeholder="每组间隔" type='number' />
         </view>
       </view>
     </view>
@@ -50,22 +50,21 @@
         </view>
         <view class="action-line">
           <label class="item" for="">动作名称</label>
-          <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" bindinput="bindNameInput"  value="{{action.name}}" placeholder="动作名称"  />
+          <!-- <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" bindinput="bindNameInput"  value="{{action.name}}" placeholder="动作名称"  /> -->
+           <input id='{{action.showId}}' data-group='{{group.showId}}' class="input" bindinput="bindinput" value="{{inputValue}}" placeholder="动作名称"  />
         </view>
+        <scroll-view scroll-y="true" class="scrollview">
+          <view wx:for="{{bindSource}}">
+            <view id="{{item}}" bindtap="itemtap" class="itemview">{{item}}</view>
+          </view>
+        </scroll-view>
         <view class="action-line">
           <label class="item" for="">每组次数</label>
-          <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" placeholder="dsfs" bindinput="bindFrequencyInput" value="{{action.frequency}}" type='number' />
+          <input id='{{action.showId}}' data-group='{{group.showId}}' class="input" placeholder="dsfs" bindinput="bindFrequencyInput" value="{{action.frequency}}" type='number' />
         </view>
         <view class="action-line">
           <label class="item" for="">每组重量</label>
-          <input id='{{action.showId}}' data-group='{{group.showId}}' class="item" placeholder="dsfs" bindinput="bindWeightInput" value="{{action.weight}}" placeholder="dsfs" type='digit' />
-          <!-- <radio-group class="radio-group" bindchange="radioChange">
-              <radio value="{{item.name}}" checked="{{item.checked}}" />
-              kg
-              <radio value="{{item.name}}" checked="{{item.checked}}" />
-              lbs
-          </radio-group> -->
-
+          <input id='{{action.showId}}' data-group='{{group.showId}}' class="input" placeholder="dsfs" bindinput="bindWeightInput" value="{{action.weight}}" placeholder="dsfs" type='digit' />
         </view>
     </view>
     <view>

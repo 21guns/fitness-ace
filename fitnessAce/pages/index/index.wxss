@@ -43,8 +43,15 @@
 .action-button{
   /* right: 5px */
 }
+.input {
+  /* border: 1px solid #fff; */
+  margin: 5rpx 20rpx 5rpx 20rpx;
+  border-bottom: 1rpx solid #09bb07;
+  font-size: 40rpx
+}
 .item {
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
+  margin: 5rpx 10rpx 5rpx 10rpx;
 
 }
 .action-button-del{
@@ -71,5 +78,23 @@
 }
 .footer{
   bottom: 0px;
+
+}
+
+.scrollview {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  /* position: fixed; */
+  /* top: 260rpx; */
+}
+
+.itemview {
+  width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  border-bottom: 1px solid #b1b1b1;
 
 }
